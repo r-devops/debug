@@ -63,6 +63,4 @@ mkdir ${topdir}/Downloads
 cd ${topdir}/Downloads
 yum install -y https://rpmfind.net/linux/fedora/linux/updates/39/Everything/x86_64/Packages/c/containers-common-1-99.fc39.noarch.rpm
 
-# Run podman
-echo "=> Running podman..."
-podman run --rm hello-world
+ln -s /usr/local/bin/podman /usr/local/bin/docker
