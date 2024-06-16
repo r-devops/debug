@@ -7,7 +7,7 @@ topdir=${HOME}/work
 mkdir -p ${topdir}
 
 # Install prereq rpms
-sudo dnf install -y git golang libseccomp-devel gpgme-devel autoconf automake libtool yajl yajl-devel libcap-devel systemd-devel cni-plugins iptables-nft rpm-build meson golang-github-cpuguy83-md2man.x86_64
+dnf install -y git golang libseccomp-devel gpgme-devel autoconf automake libtool yajl yajl-devel libcap-devel systemd-devel cni-plugins iptables-nft rpm-build meson golang-github-cpuguy83-md2man.x86_64
 
 # Build podman
 echo "=> Building podman..."
@@ -16,7 +16,7 @@ git clone https://github.com/containers/podman
 cd podman
 git switch v4.5
 make
-sudo make install
+make install
 
 # Build conmon
 echo "=> Building conmon..."
@@ -24,7 +24,7 @@ cd ${topdir}
 git clone https://github.com/containers/conmon
 cd conmon
 make -j
-sudo make install
+make install
 
 # Build crun
 echo "=> Building crun..."
@@ -34,7 +34,7 @@ cd crun
 ./autogen.sh
 ./configure --prefix=/usr/local
 make -j
-sudo make install
+make install
 
 # Build libslirp
 echo "=> Building libslirp..."
@@ -44,7 +44,7 @@ cd libslirp
 git switch stable-4.2
 meson build
 ninja -C build
-sudo ninja -C build install
+ninja -C build install
 
 # Build slirp4netns
 echo "=> Building slirp4netns..."
@@ -55,7 +55,7 @@ git switch release/0.4
 ./autogen.sh
 ./configure --prefix=/usr/local
 make -j
-sudo make install
+make install
 
 # Install containers-common
 echo "=> Building containers-common..."
